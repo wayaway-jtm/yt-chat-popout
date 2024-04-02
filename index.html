@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popout Chat</title>
+  </head>
+  <body>
+    <label for="full-addr"
+      >YouTube live address: (i.e. youtube.com/watch?v=abc123)</label
+    >
+    <input type="text" id="full-addr" name="address-inp" required />
+    <button onclick="redirectFunc()">Go</button>
+    <script>
+      function redirectFunc() {
+        const inputVal = document.getElementById('full-addr').value;
+        const uniqueUrlIndex = inputVal.indexOf('?v=');
+        if (uniqueUrlIndex > 0) {
+          const uniqueUrlPart = inputVal.slice(uniqueUrlIndex + 1);
+          window.location.href = `https://www.youtube.com/live_chat?is_popout=1&${uniqueUrlPart}`;
+        }
+      }
+    </script>
+  </body>
+</html>
